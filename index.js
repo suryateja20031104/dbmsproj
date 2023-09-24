@@ -32,7 +32,7 @@ app.get("/books/", async (request, response) => {
     SELECT
       *
     FROM
-      proj
+      books
     ;`;
   const booksArray = await db.all(getBooksQuery);
   response.send(booksArray);
