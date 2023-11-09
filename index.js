@@ -28,12 +28,14 @@ const initializeDBAndServer = async () => {
 initializeDBAndServer();
 
 app.get("/books/", async (request, response) => {
+  const { title = ""} = request.query;
   const getBooksQuery = `
     SELECT
       *
     FROM
-      book
-    ;`;
+     book
+    WHERE
+     username LIKE '%${title}%';`;
   const booksArray = await db.all(getBooksQuery);
   response.send(booksArray);
 });
