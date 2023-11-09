@@ -35,7 +35,7 @@ app.get("/books/", async (request, response) => {
     FROM
      book
     WHERE
-     username LIKE '%${title}%';`;
+     title LIKE '%${title}%';`;
   const booksArray = await db.all(getBooksQuery);
   response.send(booksArray);
 });
